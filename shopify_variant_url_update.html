@@ -51,3 +51,26 @@
   // Call the updateVariant function once on page load to set the initial state
   updateVariant();
 </script>
+<script> 
+  //Pass the (quantity selector/input) class/id
+  let quantitySelector = document.querySelector(".Q-S");
+  //Pass a button's class to increase quantity on click 
+  let inc = document.querySelector(".increment");
+  //Pass a button's class to decrease quantity on click 
+  let dec = document.querySelector(".decrement");
+  //Getting the value attrinute of quantity selector.You can also select it by dom directely...//Used parseInt to change value(which is in number type) to string
+  let value = parseInt(quantitySelector.value);
+//Adding a event listner on increment button to update value and assigning it to the html value attribute 
+  inc.addEventListener("click",()=>{
+      value++;
+      quantitySelector.value = value;
+  });
+  //Adding a event listner on decrement button to update value and assigning it to the html value attribute 
+  //Using if condition so that the value dosent go delow one
+  dec.addEventListener("click",()=>{
+      if(value > 1){
+          value--;
+          quantitySelector.value = value;
+      }
+  });
+</script>
