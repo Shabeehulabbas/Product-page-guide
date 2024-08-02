@@ -1,0 +1,53 @@
+
+<!-- URL Update Script -->
+<script>
+  // Function to update the URL with the selected variant ID
+  function updateURL(variantId) {
+    // Create a URL object from the current window location
+    const url = new URL(window.location.href);
+
+    // Set the 'variant' search parameter to the selected variant ID
+    url.searchParams.set('variant', variantId);
+
+    // Update the browser's URL without reloading the page
+    window.history.replaceState(null, null, url.toString());
+  }
+</script>
+
+<!-- Variant Update Script -->
+<script>
+  // Function to update the hidden input field based on selected options
+  function updateVariant() {
+    // Get all selected radio buttons
+    const selectedOptions = Array.from(document.querySelectorAll("input[type='radio']:checked"))
+      // Map over the selected radio buttons to get their values
+      .map(radio => radio.value);
+
+    // Get the product variants as a JSON object
+    const variants = {{ product.variants | json }};
+
+    // Find the variant that matches the selected options
+    const matchingVariant = variants.find(variant =>
+      // Check if every selected option matches the corresponding variant option
+      selectedOptions.every((value, index) => value === variant["option" + (index + 1)])
+    );
+
+    // If a matching variant is found, update the hidden input and URL
+    if (matchingVariant) {
+      // Update the hidden input field with the matching variant's ID
+      document.querySelector("input[name='id']").value = matchingVariant.id;
+
+      // Call the updateURL function to update the URL with the selected variant ID
+      updateURL(matchingVariant.id);
+    }
+  }
+
+  // Add event listeners to all radio input elements
+  document.querySelectorAll("input[type='radio']").forEach(radio => {
+    // When the radio button value changes, call the updateVariant function
+    radio.addEventListener("change", updateVariant);
+  });
+
+  // Call the updateVariant function once on page load to set the initial state
+  updateVariant();
+</script>
