@@ -1,0 +1,424 @@
+{% style %}
+        .tabs-btn-heading {
+            display: flex;
+            align-items: center;
+            border: 1px solid black;
+            padding: 10px 20px;
+            margin:0 5px;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .tabs-buttons {
+            display: flex;
+            padding: 10px 0;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        section.custom-tab-sec {
+            padding: 60px 0 60px 0;
+            cursor: pointer;
+        }
+
+        .question-heading-tabs {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            padding: 40px 0;
+        }
+
+        .move-menu {
+            transform: translateY(0) rotate(180deg);
+        }
+
+        .question-arrow {
+            transition-duration: 0.3s;
+        }
+
+        .compleate-question {
+            border-bottom: 1px solid black;
+            height: 100px;
+            overflow: hidden;
+            transition-duration: 0.5s;
+        }
+
+        .question-clicked {
+            height: 230px;
+        }
+
+        .tab-questions-div {
+        display: none;
+      }
+      .tab-questions-div.faq-tab-active {
+        display: block;
+      }
+    .tabs-btn-heading.faq-tab-active {
+        color: white;
+        background-color: black;
+    }
+    .tabs-btn-heading p {
+      margin-right: 35px;
+  }
+{% endstyle %}
+
+<section class="custom-tab-sec page-container">
+  <div class="tabs-buttons">
+    {% for block in section.blocks %}
+      <div
+        class="tabs-btn-heading {% if forloop.index == 1 %}faq-tab-active{% endif %}"
+        data-toggle-target=".bb-{{ forloop.index }}"
+      >
+        <p>{{ block.settings['tab-heading'] }}</p>
+        <i class="fa-solid fa-arrow-right-long"></i>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% for block in section.blocks %}
+    <div class="tab-questions-div bb-{{ forloop.index }} {% if forloop.index == 1 %}faq-tab-active{% endif %}">
+      {% if block.settings['tab-question-heading'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+          {% if block.settings['tab-main-question'] != blank %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <!-- This code is for 2nd question -->
+      {% if block.settings['tab-question-heading-2'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading-2'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+          {% if block.settings['tab-main-question-2'] != blank %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question-2'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <!-- This code is for 3 question -->
+      {% if block.settings['tab-question-heading-3'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading-3'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+
+          {% if block.settings['tab-main-question-3'] != blank %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question-3'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <!-- This code is for 4 question -->
+      {% if block.settings['tab-question-heading-4'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading-4'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+
+          {% if block.settings['tab-main-question-4'] != blank %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question-4'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <!-- This code is for 5 question -->
+      {% if block.settings['tab-question-heading-5'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading-5'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+
+          {% if block.settings['tab-main-question-5'] != blank %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question-5'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <!-- This code is for 6 question -->
+      {% if block.settings['tab-question-heading-6'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading-6'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+
+          {% if block.settings['tab-main-question-6'] != blank %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question-6'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <!-- This code is for 7 question -->
+      {% if block.settings['tab-question-heading-7'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading-7'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+
+          {% if block.settings['tab-main-question-7'] != blank %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question-7'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <!-- This code is for 8 question -->
+      {% if block.settings['tab-question-heading-8'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading-8'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+          {% if block.settings['tab-main-question-8'] != blank %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question-8'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <!-- This code is for 9 question -->
+      {% if block.settings['tab-question-heading-9'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading-9'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+          {% if block.settings['tab-main-question-9'] != blank %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question-9'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <!-- This code is for 10 question -->
+      {% if block.settings['tab-question-heading-10'] != blank %}
+        <div class="compleate-question">
+          <div class="question-heading-tabs">
+            {{ block.settings['tab-question-heading-10'] }}
+            <i class="question-arrow fa-solid fa-chevron-down"></i>
+          </div>
+          {% if block.settings['tab-main-question-10'] %}
+            <div class="question-main-tabs">
+              {{ block.settings['tab-main-question-10'] }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</section>
+
+<script>
+    // Tab Click Functionality
+  document.querySelectorAll('.tabs-btn-heading').forEach(function(button) {
+      button.addEventListener('click', function(evt) {
+          evt.preventDefault();
+
+          // Toggle active class on clicked button and remove from siblings
+          document.querySelectorAll('.tabs-btn-heading').forEach(function(btn) {
+              btn.classList.remove('faq-tab-active');
+          });
+          button.classList.add('faq-tab-active');
+
+          // Toggle corresponding tab content visibility
+          var sel = button.getAttribute('data-toggle-target');
+          document.querySelectorAll('.tab-questions-div').forEach(function(div) {
+              div.classList.remove('faq-tab-active');
+          });
+          document.querySelector(sel).classList.add('faq-tab-active');
+      });
+  });
+
+  // Question Click Functionality
+  document.querySelectorAll('.question-heading-tabs').forEach(function(question) {
+      question.addEventListener('click', function() {
+          var answer = question.closest('.compleate-question');
+          var qarrow = question.querySelector('.question-arrow');
+
+          // Toggle the question clicked class and arrow rotation
+          answer.classList.toggle('question-clicked');
+          qarrow.classList.toggle('move-menu');
+      });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Tabs",
+  "settings": [],
+  "blocks": [
+    {
+      "name":"Tab",
+      "type": "tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab-heading",
+          "label": "Tab Heading "
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question",
+          "label": "Answer"
+        },
+         {
+          "type": "header",
+          "content": "Question 2"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading-2",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question-2",
+          "label": "Answer"
+        },
+        {
+          "type": "header",
+          "content": "Question 3"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading-3",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question-3",
+          "label": "Answer"
+        },
+        {
+          "type": "header",
+          "content": "Question 4"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading-4",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question-4",
+          "label": "Answer"
+        },
+        {
+          "type": "header",
+          "content": "Question 5"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading-5",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question-5",
+          "label": "Answer"
+        },
+        {
+          "type": "header",
+          "content": "Question 6"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading-6",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question-6",
+          "label": "Answer"
+        },
+        {
+          "type": "header",
+          "content": "Question 7"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading-7",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question-7",
+          "label": "Answer"
+        },
+        {
+          "type": "header",
+          "content": "Question 8"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading-8",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question-8",
+          "label": "Answer"
+        },
+        {
+          "type": "header",
+          "content": "Question 9"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading-9",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question-9",
+          "label": "Answer"
+        },
+        {
+          "type": "header",
+          "content": "Question 10"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-question-heading-10",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "tab-main-question-10",
+          "label": "Answer"
+        },
+      ]
+
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Tabs"
+    }
+  ]
+}
+{% endschema %}
